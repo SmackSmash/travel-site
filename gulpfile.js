@@ -1,5 +1,6 @@
 const gulp = require('gulp'),
-  watch = require('gulp-watch');
+  watch = require('gulp-watch'),
+  postcss = require('gulp-postcss');
 
 gulp.task('default', () => {
   console.log('Default gulp task');
@@ -10,7 +11,10 @@ gulp.task('html', () => {
 });
 
 gulp.task('styles', () => {
-  return gulp.src('./app/assets/styles/styles.css').pipe(gulp.dest('./app/temp/styles'));
+  return gulp
+    .src('./app/assets/styles/styles.css')
+    .pipe(postcss())
+    .pipe(gulp.dest('./app/temp/styles'));
 });
 
 gulp.task('watch', () => {
