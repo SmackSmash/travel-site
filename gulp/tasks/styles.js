@@ -10,5 +10,8 @@ gulp.task('styles', () => {
   return gulp
     .src('./app/assets/styles/styles.css')
     .pipe(postcss([cssImport, autoprefixer, cssvars, nested]))
+    .on('error', error => {
+      console.error(`${error.name}: ${error.reason}`);
+    })
     .pipe(gulp.dest('./app/temp/styles'));
 });
