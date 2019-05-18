@@ -3,6 +3,7 @@
   padding-right: 1.1rem;
   max-width: 1236px;
   margin: 0 auto;
+  overflow: hidden;
 
   .wrapper {
     padding-left: 0;
