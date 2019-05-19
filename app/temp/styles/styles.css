@@ -1009,3 +1009,45 @@ a {
       margin-right: 1.4rem
   }
   }
+
+.site-header {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(47,85,114, 0.3);
+  width: 100%;
+  padding: 10px 0;
+}
+
+.site-header__btn-container {
+    float: right;
+  }
+
+.site-header__logo {
+    background: #2f5572;
+    padding: 25px 36px;
+    top: 0;
+    position: absolute;
+  }
+
+.primary-nav--pull-right {
+    float: right;
+  }
+
+.primary-nav ul {
+    margin: 0;
+    padding: 0;
+  }
+
+.primary-nav li {
+    list-style: none;
+    float: left;
+    padding-right: 20px;
+  }
+
+.primary-nav a {
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 0;
+  }
