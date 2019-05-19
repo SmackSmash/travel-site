@@ -3,12 +3,20 @@
   z-index: 1;
   width: 100%;
   padding: 10px 0;
+  transition: background-color 0.3s ease-out;
+
+  &--is-expanded {
+    background-color: rgba($mainBlue, 0.55);
+  }
 
   @mixin atMedium {
     background-color: rgba($mainBlue, 0.3);
   }
+
   &__btn-container {
-    float: right;
+    @mixin atMedium {
+      float: right;
+    }
   }
   &__logo {
     background: $mainBlue;
@@ -29,24 +37,84 @@
   }
   &__menu-icon {
     width: 20px;
-    height: 20px;
-    background: #fff;
+    height: 19px;
     position: absolute;
     top: 10px;
     right: 10px;
+    z-index: 10;
 
-    @medium {
+    @mixin atMedium {
       display: none;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: #fff;
+      width: 20px;
+      height: 3px;
+      margin-bottom: 5px;
+      transition: all 0.3s ease-in-out;
+      transform-origin: 0 0;
+    }
+    &__middle {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      background: #fff;
+      width: 20px;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+      opacity: 1;
+      transform-origin: 0 50%;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: 0;
+      background: #fff;
+      width: 20px;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+      transform-origin: 0 100%;
+    }
+
+    &--close-x {
+      &::before {
+        transform: rotate(45deg) scaleX(1.24);
+      }
+      .site-header__menu-icon__middle {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      &::after {
+        transform: rotate(-45deg) scaleX(1.24);
+      }
     }
   }
   &__menu-content {
-    display: none;
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.3s ease-out;
+    padding-top: 90px;
+    overflow: auto;
+    margin: 0;
+    text-align: center;
+    z-index: -10;
+    position: relative;
 
     @mixin atMedium {
-      display: block;
+      opacity: 1;
+      z-index: 1;
+      padding-top: 0;
+      transform: scale(1);
     }
     &--is-visible {
       display: block;
+      opacity: 1;
+      z-index: 1;
+      transform: scale(1);
     }
   }
 }
