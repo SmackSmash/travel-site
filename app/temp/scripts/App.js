@@ -282,7 +282,6 @@
 
 	          image.addEventListener('load', function () {
 	            Waypoint.refreshAll();
-	            console.log('An image loaded');
 	          });
 	        }
 	      } catch (err) {
