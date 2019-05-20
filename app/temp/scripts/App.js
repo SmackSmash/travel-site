@@ -258,6 +258,7 @@
 	  function StickyHeader() {
 	    _classCallCheck(this, StickyHeader);
 
+	    this.lazyImages = document.querySelectorAll('.lazyload');
 	    this.siteHeader = document.querySelector('.site-header');
 	    this.headerTriggerElement = document.querySelector('.large-hero__title');
 	    this.createHeaderWaypoint();
@@ -265,9 +266,41 @@
 	    this.headerLinks = document.querySelectorAll('.primary-nav a');
 	    this.createPageSectionWaypoints();
 	    this.addSmoothScrolling();
+	    this.refreshWaypoints();
 	  }
 
 	  _createClass(StickyHeader, [{
+	    key: 'refreshWaypoints',
+	    value: function refreshWaypoints() {
+	      var _iteratorNormalCompletion = true;
+	      var _didIteratorError = false;
+	      var _iteratorError = undefined;
+
+	      try {
+	        for (var _iterator = this.lazyImages[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	          var image = _step.value;
+
+	          image.addEventListener('load', function () {
+	            Waypoint.refreshAll();
+	            console.log('An image loaded');
+	          });
+	        }
+	      } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	      } finally {
+	        try {
+	          if (!_iteratorNormalCompletion && _iterator.return) {
+	            _iterator.return();
+	          }
+	        } finally {
+	          if (_didIteratorError) {
+	            throw _iteratorError;
+	          }
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'addSmoothScrolling',
 	    value: function addSmoothScrolling() {
 	      new _smoothScroll2.default('a[href*="#"]');
@@ -289,53 +322,18 @@
 	    value: function createPageSectionWaypoints() {
 	      var _this2 = this;
 
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
+	      var _iteratorNormalCompletion2 = true;
+	      var _didIteratorError2 = false;
+	      var _iteratorError2 = undefined;
 
 	      try {
 	        var _loop = function _loop() {
-	          var section = _step.value;
+	          var section = _step2.value;
 
 	          new Waypoint({
 	            element: section,
 	            handler: function handler(direction) {
 	              if (direction == 'down') {
-	                var _iteratorNormalCompletion2 = true;
-	                var _didIteratorError2 = false;
-	                var _iteratorError2 = undefined;
-
-	                try {
-	                  for (var _iterator2 = _this2.headerLinks[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	                    var link = _step2.value;
-
-	                    link.classList.remove('is-current-link');
-	                  }
-	                } catch (err) {
-	                  _didIteratorError2 = true;
-	                  _iteratorError2 = err;
-	                } finally {
-	                  try {
-	                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	                      _iterator2.return();
-	                    }
-	                  } finally {
-	                    if (_didIteratorError2) {
-	                      throw _iteratorError2;
-	                    }
-	                  }
-	                }
-
-	                document.querySelector(section.getAttribute('data-matching-link')).classList.add('is-current-link');
-	              }
-	            },
-	            offset: '18%'
-	          });
-
-	          new Waypoint({
-	            element: section,
-	            handler: function handler(direction) {
-	              if (direction == 'up') {
 	                var _iteratorNormalCompletion3 = true;
 	                var _didIteratorError3 = false;
 	                var _iteratorError3 = undefined;
@@ -364,24 +362,59 @@
 	                document.querySelector(section.getAttribute('data-matching-link')).classList.add('is-current-link');
 	              }
 	            },
+	            offset: '18%'
+	          });
+
+	          new Waypoint({
+	            element: section,
+	            handler: function handler(direction) {
+	              if (direction == 'up') {
+	                var _iteratorNormalCompletion4 = true;
+	                var _didIteratorError4 = false;
+	                var _iteratorError4 = undefined;
+
+	                try {
+	                  for (var _iterator4 = _this2.headerLinks[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	                    var link = _step4.value;
+
+	                    link.classList.remove('is-current-link');
+	                  }
+	                } catch (err) {
+	                  _didIteratorError4 = true;
+	                  _iteratorError4 = err;
+	                } finally {
+	                  try {
+	                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	                      _iterator4.return();
+	                    }
+	                  } finally {
+	                    if (_didIteratorError4) {
+	                      throw _iteratorError4;
+	                    }
+	                  }
+	                }
+
+	                document.querySelector(section.getAttribute('data-matching-link')).classList.add('is-current-link');
+	              }
+	            },
 	            offset: '-40%'
 	          });
 	        };
 
-	        for (var _iterator = this.pageSections[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        for (var _iterator2 = this.pageSections[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
 	          _loop();
 	        }
 	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
 	      } finally {
 	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
+	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	            _iterator2.return();
 	          }
 	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
+	          if (_didIteratorError2) {
+	            throw _iteratorError2;
 	          }
 	        }
 	      }
