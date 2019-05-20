@@ -5,9 +5,11 @@ class MobileMenu {
     this.menuContent = document.querySelector('.site-header__menu-content');
     this.events();
   }
+
   events() {
     this.menuIcon.addEventListener('click', this.toggleMenu.bind(this));
   }
+
   toggleMenu() {
     this.menuContent.classList.toggle('site-header__menu-content--is-visible');
     this.siteHeader.classList.toggle('site-header--is-expanded');
