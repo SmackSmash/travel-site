@@ -7,11 +7,13 @@ class RevealOnScroll {
     this.hideInitially();
     this.createWaypoints();
   }
+
   hideInitially() {
     for (let item of this.itemsToReveal) {
       item.classList.add('reveal-item');
     }
   }
+
   createWaypoints() {
     for (let item of this.itemsToReveal) {
       new Waypoint({
