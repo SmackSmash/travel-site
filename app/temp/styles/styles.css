@@ -1246,8 +1246,8 @@ a {
 
 .reveal-item {
   opacity: 0;
-  -webkit-transform: translateY(20%);
-          transform: translateY(20%);
+  -webkit-transform: translateY(20%) scale(1.05);
+          transform: translateY(20%) scale(1.05);
   -webkit-transition: opacity 1s ease-out, -webkit-transform 0.3s ease-out;
   transition: opacity 1s ease-out, -webkit-transform 0.3s ease-out;
   transition: opacity 1s ease-out, transform 0.3s ease-out;
@@ -1255,7 +1255,7 @@ a {
 }
 
 .reveal-item--is-visible {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
     opacity: 1;
   }

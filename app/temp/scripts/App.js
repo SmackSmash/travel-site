@@ -56,8 +56,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var mobileMenu = new _MobileMenu2.default();
-	var revealOnScroll = new _RevealOnScroll2.default();
+	new _MobileMenu2.default();
+	new _RevealOnScroll2.default('.feature-item', '100%');
+	new _RevealOnScroll2.default('.testimonial', '90%');
 
 /***/ }),
 /* 1 */
@@ -123,10 +124,11 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var RevealOnScroll = function () {
-	  function RevealOnScroll() {
+	  function RevealOnScroll(items, offset) {
 	    _classCallCheck(this, RevealOnScroll);
 
-	    this.itemsToReveal = document.querySelectorAll('.feature-item');
+	    this.itemsToReveal = document.querySelectorAll(items);
+	    this.offset = offset;
 	    this.hideInitially();
 	    this.createWaypoints();
 	  }
@@ -162,6 +164,8 @@
 	  }, {
 	    key: 'createWaypoints',
 	    value: function createWaypoints() {
+	      var _this = this;
+
 	      var _iteratorNormalCompletion2 = true;
 	      var _didIteratorError2 = false;
 	      var _iteratorError2 = undefined;
@@ -175,7 +179,7 @@
 	            handler: function handler() {
 	              item.classList.add('reveal-item--is-visible');
 	            },
-	            offset: '100%'
+	            offset: _this.offset
 	          });
 	        };
 
