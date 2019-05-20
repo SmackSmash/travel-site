@@ -18,7 +18,6 @@ class StickyHeader {
     for (let image of this.lazyImages) {
       image.addEventListener('load', () => {
         Waypoint.refreshAll();
-        console.log('An image loaded');
       });
     }
   }
