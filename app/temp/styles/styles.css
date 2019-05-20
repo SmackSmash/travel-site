@@ -1243,3 +1243,19 @@ a {
       background-color: transparent
   }
   }
+
+.reveal-item {
+  opacity: 0;
+  -webkit-transform: translateY(20%);
+          transform: translateY(20%);
+  -webkit-transition: opacity 1s ease-out, -webkit-transform 0.3s ease-out;
+  transition: opacity 1s ease-out, -webkit-transform 0.3s ease-out;
+  transition: opacity 1s ease-out, transform 0.3s ease-out;
+  transition: opacity 1s ease-out, transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.reveal-item--is-visible {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
